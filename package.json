@@ -1,0 +1,48 @@
+{
+  "name": "cypn-dev-plugin-template",
+  "description": "A template for developing kintone plugins with TypeScript",
+  "version": "1.5.0",
+  "author": "cybozu",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "tsc": "tsc --noEmit",
+    "build": "NODE_ENV=development webpack --config webpack.dev.js",
+    "build-prod": "npm run tsc && NODE_ENV=production webpack --config webpack.prod.js",
+    "build-watch": "NODE_ENV=development webpack --config webpack.dev.js --watch",
+    "generate-plugin-private-key": "node ./key/generate-private-key.js",
+    "generate-plugin-playwright-private-key": "node ./key/generate-playwright-private-key.js",
+    "pack": "kintone-plugin-packer --ppk ./key/private.ppk --out dist/cypn-dev-plugin-template.zip plugin",
+    "upload": ". ./.env && kintone-plugin-uploader dist/cypn-dev-plugin-template.zip",
+    "lint": "eslint src",
+    "test": "vitest",
+    "playwright": "TEST_ENV=test npx playwright test",
+    "playwright:ui": "TEST_ENV=test npx playwright test --ui",
+    "build-playwright": "NODE_ENV=development webpack --config webpack.playwright.js",
+    "pack-playwright": "kintone-plugin-packer --ppk ./key/playwright-private.ppk --out dist/cypn-plugin-template-playwright.zip plugin-playwright"
+  },
+  "devDependencies": {
+    "@cybozu/eslint-config": "^22.0.2",
+    "@kintone/dts-gen": "^8.1.1",
+    "@kintone/plugin-packer": "^8.2.0",
+    "@kintone/plugin-uploader": "^9.1.4",
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.10",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.31.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.4.3",
+    "vitest": "^3.0.8",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.10.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "dotenv-webpack": "^8.1.0",
+    "neverthrow": "^8.2.0",
+    "tsconfig-paths-webpack-plugin": "^4.2.0"
+  }
+}

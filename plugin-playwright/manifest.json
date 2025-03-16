@@ -1,0 +1,25 @@
+{
+  "manifest_version": 1,
+  "version": "1.3.4",
+  "type": "APP",
+  "desktop": {
+    "js": ["js/desktop.js"]
+  },
+  "icon": "image/icon.png",
+  "config": {
+    "html": "html/config.html",
+    "js": ["js/config.js"]
+  },
+  "name": {
+    "en": "[playwright]cypn-dev-plugin-template",
+    "ja": "[playwright]CyPNプラグインテンプレート"
+  },
+  "description": {
+    "en": "description",
+    "ja": "説明を記入"
+  },
+  "homepage_url": {
+    "en": "https://github.com/cy-cypn/plugin-template",
+    "ja": "https://github.com/cy-cypn/plugin-template"
+  }
+}

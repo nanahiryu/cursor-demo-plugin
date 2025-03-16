@@ -1,0 +1,18 @@
+node_modules
+!.gitkeep
+renovate.json
+.DS_Store
+dist
+plugin/js
+plugin-playwright/js
+
+# Ignore .env.production, .env.development files
+.env*
+!.env.test.example
+!.env.dev-prod.example
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

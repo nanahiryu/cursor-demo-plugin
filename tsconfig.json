@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "ES2022", // 2025年設定, 念の為3年前の最新ブラウザでの動作を保証できるため2022年設定,
+    "module": "esnext",
+    "lib": ["DOM"],
+    "checkJs": true,
+    "rootDir": "src",
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+
+    /* Additional Checks */
+    "exactOptionalPropertyTypes": true, // Interpret optional property types in excess property checks as requiring that the properties be present with a 'undefined' value.
+    "noUnusedLocals": true /* Report errors on unused locals. */,
+    "noUnusedParameters": true /* Report errors on unused parameters. */,
+    "noUncheckedIndexedAccess": true, // Include 'undefined' in index signature results
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
+    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file.
+
+    /* Module Resolution Options */
+    "esModuleInterop": true, // Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'.
+    "moduleResolution": "bundler", // webpack を利用するのでbundlerを指定
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */,
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "files": ["./node_modules/@kintone/dts-gen/kintone.d.ts"],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

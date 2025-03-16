@@ -1,0 +1,9 @@
+name: Build Artifact For Development
+
+on: workflow_dispatch
+jobs:
+  build-artifact-for-development:
+    uses: cy-cypn/release-actions/.github/workflows/build-artifact-for-development.yml@main
+    # 認証情報が必要ないなら設定しなくてもOK
+    secrets:
+      dotenv-dev: ${{ secrets.DOTENV_DEV }}
