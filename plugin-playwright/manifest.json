@@ -1,6 +1,6 @@
 {
   "manifest_version": 1,
-  "version": "1.3.4",
+  "version": "1.5.0",
   "type": "APP",
   "desktop": {
     "js": ["js/desktop.js"]
@@ -11,15 +11,15 @@
     "js": ["js/config.js"]
   },
   "name": {
-    "en": "[playwright]cypn-dev-plugin-template",
-    "ja": "[playwright]CyPNプラグインテンプレート"
+    "en": "[playwright]generative-ai-demo",
+    "ja": "[playwright]Generative AI Demo"
   },
   "description": {
-    "en": "description",
-    "ja": "説明を記入"
+    "en": "[playwright]Generative AI Demo",
+    "ja": "[playwright]Generative AI Demo"
   },
   "homepage_url": {
-    "en": "https://github.com/cy-cypn/plugin-template",
-    "ja": "https://github.com/cy-cypn/plugin-template"
+    "en": "https://github.com/cy-cypn/generativeAIDemoPlugin",
+    "ja": "https://github.com/cy-cypn/generativeAIDemoPlugin"
   }
 }

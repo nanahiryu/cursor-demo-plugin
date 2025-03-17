@@ -6,6 +6,7 @@
     "lib": ["DOM"],
     "checkJs": true,
     "rootDir": "src",
+    "jsx": "react-jsx", // JSXサポートを追加
 
     /* Strict Type-Checking Options */
     "strict": true,
