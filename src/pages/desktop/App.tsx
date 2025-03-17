@@ -1,10 +1,11 @@
+import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 
 const App: React.FC = () => {
   return (
-    <div>
-      <h1>Generative AI Demo Plugin</h1>
-    </div>
+    <Box>
+      <Text>Generative AI Demo Plugin</Text>
+    </Box>
   );
 };
 

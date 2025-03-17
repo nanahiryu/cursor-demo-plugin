@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 
+import { Provider } from "@/components/ui/provider";
 import { getPluginConfig } from "@/pages/shared/functions/utils";
 import { initPluginConfigParam, pluginId, pluginVersion } from "@/params/param";
 
@@ -19,7 +20,9 @@ import { initPluginConfigParam, pluginId, pluginVersion } from "@/params/param";
     const root = createRoot(div);
     root.render(
       <StrictMode>
-        <App />
+        <Provider>
+          <App />
+        </Provider>
       </StrictMode>,
     );
     space.appendChild(div);
