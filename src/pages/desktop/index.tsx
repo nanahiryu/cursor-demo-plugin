@@ -13,7 +13,7 @@ import { initPluginConfigParam, pluginId, pluginVersion } from "@/params/param";
   kintone.events.on(["app.record.index.show"], (event) => {
     console.info("success load config", config);
 
-    const space = kintone.app.getHeaderMenuSpaceElement();
+    const space = document.getElementById("plugin-root");
     if (!space) return event;
 
     const div = document.createElement("div");
