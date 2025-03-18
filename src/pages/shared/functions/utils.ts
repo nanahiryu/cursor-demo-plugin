@@ -1,5 +1,7 @@
 import { Result } from "neverthrow";
 
+import { EmptyObject, PluginConfig, PluginConfigParam, PluginConfigUnParsed } from "@/types/type";
+
 export const safeJsonParse: <T>(text: string) => Result<T, string> = Result.fromThrowable(
   (text: string) => JSON.parse(text),
   (error) => {
@@ -61,4 +63,17 @@ export const getPluginConfig = (pluginId: string, initPluginConfigParam: PluginC
   }, {} as Partial<PluginConfig>);
 
   return config as PluginConfig;
+};
+
+export const savePluginConfig = async (param: PluginConfigParam, version: string) => {
+  const config = {
+    param,
+    version,
+  };
+
+  const newConfig: Partial<PluginConfigUnParsed> = {};
+  for (const key of getObjectKeys(config)) {
+    newConfig[key] = JSON.stringify(config[key]);
+  }
+  kintone.plugin.app.setConfig(newConfig);
 };
