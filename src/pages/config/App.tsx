@@ -1,8 +1,9 @@
-import { Box, ColorPicker, HStack, Heading, Portal, Text, parseColor } from "@chakra-ui/react";
+import { Box, HStack, Heading, Text, parseColor } from "@chakra-ui/react";
 import React, { useState } from "react";
 
 import { savePluginConfig } from "../shared/functions/utils";
 
+import { CustomColorPicker } from "@/components/colorPicker";
 import { PrimaryButton } from "@/components/ui/button";
 import { PluginConfigParam } from "@/types/type";
 
@@ -32,66 +33,14 @@ const App: React.FC<AppProps> = ({ config }) => {
           <Text fontSize="xl" mb={4}>
             勤続年数5年以上
           </Text>
-          <ColorPicker.Root value={highColor} onValueChange={(e) => setHighColor(e.value)} maxW="200px">
-            <ColorPicker.HiddenInput />
-            <ColorPicker.Control>
-              <ColorPicker.Input />
-              <ColorPicker.Trigger />
-            </ColorPicker.Control>
-            <Portal>
-              <ColorPicker.Positioner>
-                <ColorPicker.Content>
-                  <ColorPicker.Area />
-                  <HStack>
-                    <ColorPicker.EyeDropper size="xs" variant="outline" />
-                    <ColorPicker.Sliders />
-                  </HStack>
-                </ColorPicker.Content>
-              </ColorPicker.Positioner>
-            </Portal>
-          </ColorPicker.Root>
-          <Box
-            mt={2}
-            w="100px"
-            h="20px"
-            bg={highColor.toString("hex")}
-            border="1px solid"
-            borderColor="gray.200"
-            borderRadius="sm"
-          />
+          <CustomColorPicker color={highColor} onColorChange={setHighColor} />
         </Box>
 
         <Box>
           <Text fontSize="xl" mb={4}>
             勤続年数5年未満
           </Text>
-          <ColorPicker.Root value={lowColor} onValueChange={(e) => setLowColor(e.value)} maxW="200px">
-            <ColorPicker.HiddenInput />
-            <ColorPicker.Control>
-              <ColorPicker.Input />
-              <ColorPicker.Trigger />
-            </ColorPicker.Control>
-            <Portal>
-              <ColorPicker.Positioner>
-                <ColorPicker.Content>
-                  <ColorPicker.Area />
-                  <HStack>
-                    <ColorPicker.EyeDropper size="xs" variant="outline" />
-                    <ColorPicker.Sliders />
-                  </HStack>
-                </ColorPicker.Content>
-              </ColorPicker.Positioner>
-            </Portal>
-          </ColorPicker.Root>
-          <Box
-            mt={2}
-            w="100px"
-            h="20px"
-            bg={lowColor.toString("hex")}
-            border="1px solid"
-            borderColor="gray.200"
-            borderRadius="sm"
-          />
+          <CustomColorPicker color={lowColor} onColorChange={setLowColor} />
         </Box>
       </Box>
       <HStack mt={8} justifyContent="flex-end">
