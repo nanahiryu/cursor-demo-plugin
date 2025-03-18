@@ -1,5 +1,6 @@
 import { Page } from "@playwright/test";
 
+// adminでログインする
 export const loginAdmin = async (page: Page) => {
   const baseUrl = process.env.BASE_URL;
   const username = process.env.USERNAME;
@@ -10,6 +11,7 @@ export const loginAdmin = async (page: Page) => {
   await login(page, username, password);
 };
 
+// ログインする
 const login = async (page: Page, username: string, password: string) => {
   const baseUrl = process.env.BASE_URL;
   if (!baseUrl) {

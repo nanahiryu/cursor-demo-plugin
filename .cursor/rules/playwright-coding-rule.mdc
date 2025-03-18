@@ -4,3 +4,59 @@ globs: tests/playwright/**/*.ts
 alwaysApply: false
 ---
 # playwrightのコーディングルール
+
+## 画面構成
+
+- ポータル: ログイン後に遷移する画面
+  - https://{baseUrl}/k/#/portal
+- レコード一覧画面: 顧客の情報が一覧できる
+  - https://{baseUrl}/k/{appId}/
+- レコード詳細画面: 一顧客の詳細情報を閲覧できる
+  - url: https://{baseUrl}/k/{appId}/show#record={recordId}
+- アプリ設定画面: アプリに関する設定が行える画面
+  - url: https://{baseUrl}/k/admin/app/flow?app={appId}
+- プラグイン設定画面: プラグインに関する設定が行える画面
+  - url: https://{baseUrl}/k/admin/app/{appId}/plugin/config?pluginId={pluginId}
+
+## tests/playwright/配下のディレクトリ構成について
+
+- utils/
+  - api.ts: kintoneのJS APIやREST APIを利用する関数を実装するファイル
+  - auth.ts: ログインやユーザーの切り替え周りの処理を扱う汎用関数を実装するファイル
+  - config.ts: プラグインの設定、または設定画面でのみ扱う汎用関数を実装するファイル
+  - main.ts: レコード一覧画面やレコード詳細画面でのみ扱う汎用関数を実装するファイル 
+  - shared.ts: 画面問わず扱う汎用関数を実装するファイル 
+  - params.ts: playwrightで頻繁に利用する文言について一括管理するファイル
+- sample.spec.ts: config.spec.ts, main.spec.ts実装の際に参考にするファイル
+- config.spec.ts: アプリ、プラグイン設定画面に関するテストを実装するファイル
+- main.spec.ts: レコード一覧画面、レコード詳細画面に関するテストを実装するファイル
+
+## コード実装時の注意
+
+### AAAパターンのActにapi.tsの関数を利用しない
+
+- データの事前準備や検証以外ではapi.ts配下の関数は利用しない
+
+例)
+
+- プラグイン画面表示の検証を行いたい場合に、api.tsのgetPluginConfigを利用しない
+
+### 画面遷移の際には単純なpage.goto()を使用しない
+
+- waitForUrl()を併用したshared.tsのnavigateToUrlを利用する
+
+### 同一ファイル内で共通する事前処理についてはtest.beforeEachを利用する
+
+例)
+
+```
+test.beforeEach(async ({ page }) => {
+  await setupSomeFunc()
+})
+```
+
+## その他諸注意
+
+- テスト仕様書に記載されたテストケース1つに対して1つのテストを実装するようにしてください
+- テストタイトルはテスト仕様書のものをそのまま利用してください、この時テスト番号も含めてください
+- beforeEachで必ず一番初めにloginAdminするようにしてください。ほとんどのコードはログインしないと利用できません

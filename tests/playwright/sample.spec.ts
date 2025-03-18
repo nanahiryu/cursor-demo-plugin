@@ -1,7 +1,7 @@
 import test, { expect } from "@playwright/test";
 
 import { loginAdmin } from "./utils/auth";
-import { navigateToUrl } from "./utils/main";
+import { navigateToUrl } from "./utils/shared";
 
 test.beforeEach(async ({ page }) => {
   await loginAdmin(page);
