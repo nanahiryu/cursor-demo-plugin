@@ -1,0 +1,6 @@
+---
+description: 
+globs: tests/playwright/**/*.ts
+alwaysApply: false
+---
+# playwrightのコーディングルール
