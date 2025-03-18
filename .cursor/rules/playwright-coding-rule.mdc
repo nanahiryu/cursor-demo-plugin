@@ -64,6 +64,13 @@ test.beforeEach(async ({ page }) => {
 - class名のような変更されやすい値ではなくDOM構造やtitle属性、利用されている文言など変更されづらいと考えられる要素を利用してelementを抽出する
 - DOMは `.cursor/rules/domExample` に例があるのでそこを参考に実装する
 
+例) 良くないケース
+
+```
+.locator(".colorPicker__trigger").first().click();
+.locator(".recordlist-cell-gaia.recordlist-single_line_text-gaia.value-15925950")
+```
+
 ## その他諸注意
 
 - テスト仕様書に記載されたテストケース1つに対して1つのテストを実装するようにしてください
