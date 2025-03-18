@@ -1,0 +1,5 @@
+
+# Ignore .env.production, .env.development files
+.env*
+!.env.test.example
+!.env.dev-prod.example
