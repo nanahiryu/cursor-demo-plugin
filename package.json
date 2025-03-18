@@ -22,7 +22,8 @@
     "playwright:ui": "TEST_ENV=test npx playwright test --ui",
     "build-playwright": "NODE_ENV=development webpack --config webpack.playwright.js",
     "pack-playwright": "kintone-plugin-packer --ppk ./key/playwright-private.ppk --out dist/cypn-plugin-template-playwright.zip plugin-playwright",
-    "upload-playwright": ". ./.env.test && kintone-plugin-uploader dist/cypn-plugin-template-playwright.zip --base-url https://$BASE_URL --username $USERNAME --password $PASSWORD"
+    "upload-playwright": ". ./.env.test && kintone-plugin-uploader dist/cypn-plugin-template-playwright.zip --base-url https://$BASE_URL --username $USERNAME --password $PASSWORD",
+    "deploy-playwright": "npm run build-playwright && npm run pack-playwright && npm run upload-playwright"
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^22.0.2",
@@ -43,10 +44,13 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.13.0",
+    "@ark-ui/react": "^5.1.0",
+    "@chakra-ui/react": "3.13",
     "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "dotenv": "^16.4.7",
     "dotenv-webpack": "^8.1.0",
+    "framer-motion": "^12.5.0",
     "neverthrow": "^8.2.0",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",

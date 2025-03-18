@@ -4,7 +4,7 @@ const { default: TsconfigPathsPlugin } = require("tsconfig-paths-webpack-plugin"
 
 module.exports = {
   entry: {
-    config: "./src/pages/config/index.ts",
+    config: "./src/pages/config/index.tsx",
     desktop: "./src/pages/desktop/index.tsx",
   },
 

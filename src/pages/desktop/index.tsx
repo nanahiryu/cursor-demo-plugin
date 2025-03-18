@@ -1,9 +1,3 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-
-import App from "./App";
-
-import { Provider } from "@/components/ui/provider";
 import { getPluginConfig } from "@/pages/shared/functions/utils";
 import { initPluginConfigParam, pluginId, pluginVersion } from "@/params/param";
 
@@ -11,21 +5,20 @@ import { initPluginConfigParam, pluginId, pluginVersion } from "@/params/param";
   const config = getPluginConfig(pluginId, initPluginConfigParam, pluginVersion);
 
   kintone.events.on(["app.record.index.show"], (event) => {
-    console.info("success load config", config);
+    const elements = kintone.app.getFieldElements("working_year");
 
-    const space = document.getElementById("plugin-root");
-    if (!space) return event;
+    if (!elements) return event;
+    elements.forEach((element) => {
+      const strWorkingYear = element.textContent;
+      if (!strWorkingYear) return;
+      const workingYear = parseInt(strWorkingYear, 10);
 
-    const div = document.createElement("div");
-    const root = createRoot(div);
-    root.render(
-      <StrictMode>
-        <Provider>
-          <App />
-        </Provider>
-      </StrictMode>,
-    );
-    space.appendChild(div);
+      if (workingYear > 5) {
+        element.style.backgroundColor = config.param.highColor;
+      } else {
+        element.style.backgroundColor = config.param.lowColor;
+      }
+    });
 
     return event;
   });
