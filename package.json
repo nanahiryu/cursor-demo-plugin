@@ -19,6 +19,7 @@
     "lint": "eslint src",
     "test": "vitest",
     "playwright": "TEST_ENV=test npx playwright test",
+    "playwright-chromium-only": "TEST_ENV=test npx playwright test --project=chromium",
     "playwright:ui": "TEST_ENV=test npx playwright test --ui",
     "build-playwright": "NODE_ENV=development webpack --config webpack.playwright.js",
     "pack-playwright": "kintone-plugin-packer --ppk ./key/playwright-private.ppk --out dist/cypn-plugin-template-playwright.zip plugin-playwright",
