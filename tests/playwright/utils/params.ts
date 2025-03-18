@@ -2,7 +2,7 @@ export const PARAMS_FOR_PLAYWRIGHT = {
   defaultTimeout: 1000,
   pluginConfig: {
     isEnabledCheck: "有効にする",
-    confirmButton: "保存する",
+    confirmButton: "保存",
     backToAppSetting: "アプリの設定に戻る",
   },
   config: {
